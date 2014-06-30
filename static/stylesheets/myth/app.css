@@ -4,7 +4,7 @@
 	--gray-lighter: #f9f9f9;
 }
 
-@import '../../node_modules/normalize.css/normalize.css';
+@import '../../../node_modules/normalize.css/normalize.css';
 
 *{
 	box-sizing: border-box;

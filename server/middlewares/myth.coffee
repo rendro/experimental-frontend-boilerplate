@@ -22,7 +22,7 @@ class Myth extends Middleware
 		return
 
 	compile: (file) =>
-		file && console.log("#{path.relative(process.cwd(), file)} changed: CSS (myth) compiled")
+		file && console.log("[Myth] -> CSS compiled")
 		contents = @readSrcFile()
 		try
 			@compiledSource = myth(contents, @options)

@@ -26,7 +26,7 @@ class Less extends Middleware
 		return
 
 	compile: (file) =>
-		file && console.log("#{path.relative(process.cwd(), file)} changed: LESS compiled")
+		file && console.log("[LESS] -> CSS compiled")
 		contents = @readSrcFile()
 		@parser.parse(contents, (err, tree) =>
 			if err

@@ -38,7 +38,7 @@ else
 Myth = require './middlewares/myth'
 
 myth = new Myth({
-	src: path.join(staticDir, 'stylesheets', 'app.css')
+	src: path.join(staticDir, 'stylesheets', 'myth', 'app.css')
 	autoprefixer: [
 		'last 2 versions'
 		'> 1%'
@@ -54,7 +54,7 @@ myth.on('compiled', (file) ->
 # Less = require './middlewares/less'
 
 # less = new Less({
-# 	src: path.join(staticDir, 'stylesheets', 'app.less')
+# 	src: path.join(staticDir, 'stylesheets', 'less', 'app.less')
 # 	paths: [
 # 		path.join(process.cwd(), 'node_modules')
 # 	]

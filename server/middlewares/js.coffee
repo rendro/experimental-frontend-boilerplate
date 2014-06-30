@@ -21,7 +21,7 @@ class Js extends Middleware
 		return
 
 	compile: (file) =>
-		file && console.log("#{path.relative(process.cwd(), file)} changed: javascript compiled")
+		file && console.log("[ES6] -> JavaScript compiled")
 		contents = @readSrcFile()
 
 		browserify()

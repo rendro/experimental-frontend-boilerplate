@@ -26,14 +26,14 @@ class WatchDir extends Observer
 	addFile: (file) =>
 		stats = fs.statSync(file)
 		@lastChanges[file] = stats.mtime
-		console.log "[WatchDir] WATCHING: #{file}"
+		console.log "[WatchDir] WATCHING: #{path.relative(process.cwd(), file)}"
 		@emit('watch', file)
 
 	onWatchEvent: (file) =>
 
 		# deleted if file does not exist any more
 		if not fs.existsSync(file)
-			console.log "[WatchDir] DELETED: #{file}"
+			console.log "[WatchDir] DELETED: #{path.relative(process.cwd(), file)}"
 			@emit('delete', file)
 		else
 			# matches file pattern
@@ -43,11 +43,11 @@ class WatchDir extends Observer
 			if @lastChanges[file]?
 				if @lastChanges[file] < stats.mtime
 					@lastChanges[file] = stats.mtime
-					console.log "[WatchDir] CHANGED: #{file}"
+					console.log "[WatchDir] CHANGED: #{path.relative(process.cwd(), file)}"
 					@emit('change', file)
 			else
 				@lastChanges[file] = stats.mtime
-				console.log "[WatchDir] ADDED: #{file}"
+				console.log "[WatchDir] ADDED: #{path.relative(process.cwd(), file)}"
 				@emit('add', file)
 
 	constructor: (@basePath, @pattern) ->
