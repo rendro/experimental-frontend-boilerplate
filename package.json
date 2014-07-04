@@ -6,7 +6,7 @@
   "author": "Robert Fleischmann",
   "private": true,
   "scripts": {
-    "start": "nodemon --watch server server/server.coffee"
+    "start": "nodemon --watch server server/server.js"
   },
   "dependencies": {
     "autoprefixer": "^1.1.20140430",
