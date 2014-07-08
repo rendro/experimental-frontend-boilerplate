@@ -18,7 +18,7 @@ class Myth extends Middleware
 	logError: (err) ->
 		errorMessage = "Myth error: #{err.message}"
 		@compiledSource = "body::before{display:block;content:\"#{errorMessage}\";background:white;color:red;border:3px solid red;padding: 20px;font:20px/1.5 Helvetica,Arial,sans-serif;}"
-		console.log errorMessage.red
+		console.log(errorMessage.red)
 		return
 
 	compile: (file) =>
@@ -26,9 +26,8 @@ class Myth extends Middleware
 		contents = @readSrcFile()
 		try
 			@compiledSource = myth(contents, @options)
-			super()
 		catch e
 			@logError(e)
-		return
+		return super
 
 module.exports = Myth
