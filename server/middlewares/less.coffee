@@ -22,7 +22,7 @@ class Less extends Middleware
 	logError: (err) ->
 		errorMessage = "LESS #{err.type} error: #{err.message} in #{err.filename}:#{err.line}:#{err.column}"
 		@compiledSource = "body::before{display:block;content:'#{errorMessage}';background:white;color:red;border:3px solid red;padding: 20px;font:20px/1.5 Helvetica,Arial,sans-serif;}"
-		console.log errorMessage.red
+		console.log(errorMessage.red)
 		return
 
 	compile: (file) =>
@@ -31,7 +31,7 @@ class Less extends Middleware
 		@parser.parse(contents, (err, tree) =>
 			if err
 				@logError(err)
-				return
+				return super
 
 			try
 				css = tree.toCSS({
@@ -40,7 +40,7 @@ class Less extends Middleware
 				})
 			catch err
 				@logError(err)
-				return
+				return super
 
 			result = autoprefixer.apply(null,@config.autoprefixer).process(css, {
 				from: path.basename(@config.src)
@@ -49,7 +49,7 @@ class Less extends Middleware
 			})
 
 			@compiledSource = result.css
-			super
+			return super
 		)
 		return
 
