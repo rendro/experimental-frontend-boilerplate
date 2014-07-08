@@ -49,8 +49,8 @@ class Less extends Middleware
 			})
 
 			@compiledSource = result.css
+			super
 		)
-		super
 		return
 
 module.exports = Less
