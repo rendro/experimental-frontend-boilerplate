@@ -17,7 +17,7 @@ class Js extends Middleware
 	logError: (err) ->
 		errorMessage = "JavaScript compilation #{err}"
 		@compiledSource = "console.error ? console.error(\"#{errorMessage}\") : console.log(\"#{errorMessage}\");"
-		console.log errorMessage.red
+		console.log(errorMessage.red)
 		return
 
 	compile: (file) =>
@@ -31,8 +31,8 @@ class Js extends Middleware
 			.bundle({ debug: true }, (err, src) =>
 				if err
 					@logError(err)
-					return
-				@compiledSource = src
+				else
+					@compiledSource = src
 				super
 			)
 		return
